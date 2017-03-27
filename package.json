@@ -1,10 +1,10 @@
 {
-  "name": "chalk-template",
+  "name": "chalk-stencil",
   "version": "0.1.0",
   "description": "Tagged template literal for stylish outputs",
   "main": "index.js",
-  "repository": "Meesayen/chalk-template",
-  "bugs": "https://github.com/Meesayen/chalk-template/issues/",
+  "repository": "Meesayen/chalk-stencil",
+  "bugs": "https://github.com/Meesayen/chalk-stencil/issues/",
   "author": "Federico Giovagnoli <gvg.fede@gmail.com>",
   "license": "MIT",
   "engines": {

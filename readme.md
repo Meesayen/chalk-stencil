@@ -1,4 +1,4 @@
-Chalk Template
+Chalk Stencil
 ===============
 
 > The tagged template literal for colorful command line outputs that you didn't know you needed!
@@ -8,11 +8,11 @@ Chalk Template
 ### Install
 
 ```bash
-$ npm install --save chalk-template
+$ npm install --save chalk-stencil
 
 # or
 
-$ yarn add chalk-template
+$ yarn add chalk-stencil
 ```
 
 ### Usage
@@ -20,7 +20,7 @@ $ yarn add chalk-template
 You can create a colorful template using all the [Chalk][1]'s available styles:
 
 ```js
-const chalk = require('chalk-template')
+const chalk = require('chalk-stencil')
 const msg = chalk`This ${'text::red'} is going to be red, and this ${'one::yellow'} yellow`
 
 console.log(msg({ text: 'text', one: 'other text' }))
@@ -70,6 +70,10 @@ tpl('thing')
 
 tpl(42)
 ```
+
+### Related
+
+Chalk: [chalk][1]
 
 
 [1]: https://github.com/chalk/chalk
