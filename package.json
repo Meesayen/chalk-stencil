@@ -1,0 +1,50 @@
+{
+  "name": "chalk-template",
+  "version": "0.1.0",
+  "description": "Tagged template literal for stylish outputs",
+  "main": "index.js",
+  "repository": "Meesayen/chalk-template",
+  "bugs": "https://github.com/Meesayen/chalk-template/issues/",
+  "author": "Federico Giovagnoli <gvg.fede@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "index.js",
+    "readme.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "color",
+    "colour",
+    "colors",
+    "terminal",
+    "console",
+    "cli",
+    "string",
+    "str",
+    "template",
+    "tag",
+    "literal",
+    "ansi",
+    "style",
+    "styles",
+    "tty",
+    "formatting",
+    "rgb",
+    "256",
+    "shell",
+    "xterm",
+    "log",
+    "logging",
+    "command-line",
+    "text"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.3"
+  }
+}
