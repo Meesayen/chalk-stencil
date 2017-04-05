@@ -18,27 +18,25 @@ function colorize(chunk) {
   return str
 }
 
-const chalkTag = function chalkTag(strings, ...keys) {
-  let i = 0
-  let resStr = ''
-  for (const s of strings) {
-    resStr = `${resStr}${s}${colorize(keys[i++] || '')}`
-  }
-  return resStr
-}
-
-const chalkTemplate = function chalkTemplate(strings, ...keys) {
-  return (props) => {
+const chalkStencil = function chalkStencil(strings, ...keys) {
+  const tplFn = (props) => {
     let i = 0
     let resStr = ''
     for (const s of strings) {
       const key = keys[i++]
-      if (!key) {
+      if (key === void 0) {
         resStr = `${resStr}${s}`
       } else {
         const [ prop, style ] = key.split('::')
-        const val = (prop && props[prop]) ||
-            ((prop === '_' && typeof props !== 'object') ? props : `<missing property '${prop}'>`)
+        let val
+        if (prop === '_') {
+          val = `${props}`
+        } else if (prop !== void 0) {
+          if (props !== void 0 && props[prop] !== void 0) val = props[prop]
+          else val = prop
+        } else {
+          val = `<missing property>`
+        }
         if (style) {
           resStr = `${resStr}${s}${colorize(`${val}::${style}`)}`
         } else {
@@ -48,12 +46,16 @@ const chalkTemplate = function chalkTemplate(strings, ...keys) {
     }
     return colorRE.exec(resStr) ? colorize(resStr) : resStr
   }
+
+  // I'm probably a bad person, but this allows for cleaner simple usages like:
+  // console.log(chalk`just a simple red message::red`)
+  tplFn.inspect = () => tplFn()
+
+  return tplFn
 }
 
 // Dogfooding
-const warnMsg = chalkTemplate`Warning: The color or style ${'_::cyan.underline'} does not exist
+const warnMsg = chalkStencil`Warning: The color or style ${'_::cyan.underline'} does not exist
 ::yellow`
 
-module.exports = chalkTemplate
-module.exports.tag = chalkTag
-module.exports._ = chalk
+module.exports = chalkStencil

@@ -71,6 +71,23 @@ tpl('thing')
 tpl(42)
 ```
 
+#### Raw strings
+You can use raw strings as well, it Just Works:
+
+```js
+chalk`The following ${'text will be colored::magenta'} while the rest will not.`
+```
+
+#### Simple usage
+The `chalk-stencil` tagged literal will always return a function, so that you can pass properties
+to it, but you can also use it as if it was a plain tag:
+
+```js
+console.log(chalk`I'm going to ${'rock::green'} tonight.::bold`)
+// note how you don't have to "call" the function at the end
+// i.e. no chalk`something`() to produce the actual string
+```
+
 ### Related
 
 Chalk: [chalk][1]
