@@ -49,7 +49,12 @@ const chalkStencil = function chalkStencil(strings, ...keys) {
 
   // I'm probably a bad person, but this allows for cleaner simple usages like:
   // console.log(chalk`just a simple red message::red`)
+  // If someone will ever need to inspect the source code at runtime, it can be done like so:
+  // const tpl = chalk`some red stuff::red`
+  // Function.prototype.toString.call(tpl)
   tplFn.inspect = () => tplFn()
+  tplFn.toString = () => tplFn()
+  tplFn.valueOf = () => tplFn()
 
   return tplFn
 }
