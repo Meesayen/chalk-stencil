@@ -56,6 +56,7 @@
     "coveralls": "^2.13.1",
     "eslint-config-paprika": "^1.0.0",
     "nyc": "^10.3.2",
+    "sinon": "^2.2.0",
     "xo": "^0.18.2"
   }
 }
