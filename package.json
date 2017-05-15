@@ -1,6 +1,6 @@
 {
   "name": "chalk-stencil",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "Tagged template literal for stylish outputs",
   "main": "chalk-stencil.js",
   "repository": "Meesayen/chalk-stencil",
