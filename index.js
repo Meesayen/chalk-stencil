@@ -4,38 +4,38 @@ const colorRE = /::[\w.]+$/
 
 function colorize(chunk) {
   if (!colorRE.exec(chunk)) return chunk
-  const [ str, chalkCode ] = chunk.split('::')
+  const [str, chalkCode] = chunk.split('::')
 
   return chalkCode.split('.').reduce((s, style) => {
     if ({}.hasOwnProperty.call(chalk.styles, style)) {
       return chalk[style](s)
     }
     // NOTE - to future self: `warnMsg` is defined at the very bottom. You're welcome.
+    // eslint-disable-next-line no-use-before-define
     console.warn(warnMsg(style))
     return s
   }, str)
-
-  return str
 }
 
-const chalkStencil = function chalkStencil(strings, ...keys) {
-  const tplFn = (props) => {
+const chalkStencil = function (strings, ...keys) {
+  const tplFn = props => {
     let i = 0
     let resStr = ''
     for (const s of strings) {
       const key = keys[i++]
-      if (key === void 0) {
+      if (key === undefined) {
         resStr = `${resStr}${s}`
       } else {
-        const [ prop, style ] = key.split('::')
+        const [prop, style] = key.split('::')
         let val
         if (prop === '_') {
           val = `${props}`
-        } else if (prop !== void 0) {
-          if (props !== void 0 && props[prop] !== void 0) val = props[prop]
-          else val = prop
-        } else {
+        } else if (prop === undefined) {
           val = `<missing property>`
+        } else if (props !== undefined && props[prop] !== undefined) {
+          val = props[prop]
+        } else {
+          val = prop
         }
         if (style) {
           resStr = `${resStr}${s}${colorize(`${val}::${style}`)}`

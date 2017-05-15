@@ -5,6 +5,10 @@ Chalk Stencil
 
 [![asciicast](https://asciinema.org/a/7yrb3royn7zvf689e85qaicz9.png)](https://asciinema.org/a/7yrb3royn7zvf689e85qaicz9)
 
+> Note: The asciinema video still references the module by its original name `chalk-template`,
+sorry about that. Please don't let it confuses you, the module is called `chalk-stencil` 🙏
+
+
 ### Install
 
 ```bash
@@ -94,7 +98,7 @@ to it, but you can also use it as if it was a plain tag:
 ```js
 console.log(chalk`I'm going to ${'rock::green'} tonight.::bold`)
 // = I'm going to rock tonight.
-//                ^^^^ green, everything bold
+//                ^^^^ this one is green - everything else is just bold
 // note how you don't have to "call" the function at the end
 // i.e. no chalk`something`() to produce the actual string
 ```
