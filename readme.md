@@ -1,5 +1,6 @@
-Chalk Stencil
-===============
+# Chalk Stencil
+
+[![Build Status](https://travis-ci.org/Meesayen/chalk-stencil.svg?branch=master)](https://travis-ci.org/Meesayen/chalk-stencil) [![Coverage Status](https://coveralls.io/repos/github/Meesayen/chalk-stencil/badge.svg?branch=master)](https://coveralls.io/github/Meesayen/chalk-stencil?branch=master) [![Code Style](https://img.shields.io/badge/code%20style-XO%20paprika-f75612.svg)](https://www.npmjs.com/package/eslint-config-paprika)
 
 > The tagged template literal for colorful command line outputs that you didn't know you needed!
 
@@ -106,6 +107,11 @@ console.log(chalk`I'm going to ${'rock::green'} tonight.::bold`)
 ### Related
 
 Chalk: [chalk][1]
+
+
+## License
+
+MIT © Federico Giovagnoli
 
 
 [1]: https://github.com/chalk/chalk

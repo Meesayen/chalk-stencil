@@ -2,7 +2,7 @@
   "name": "chalk-stencil",
   "version": "0.3.1",
   "description": "Tagged template literal for stylish outputs",
-  "main": "index.js",
+  "main": "chalk-stencil.js",
   "repository": "Meesayen/chalk-stencil",
   "bugs": "https://github.com/Meesayen/chalk-stencil/issues/",
   "author": "Federico Giovagnoli <gvg.fede@gmail.com>",
@@ -11,10 +11,11 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "test": "xo"
+    "test": "xo && nyc ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "files": [
-    "index.js",
+    "chalk-stencil.js",
     "readme.md",
     "LICENSE"
   ],
@@ -51,7 +52,10 @@
     "chalk": "^1.1.3"
   },
   "devDependencies": {
+    "ava": "^0.19.1",
+    "coveralls": "^2.13.1",
     "eslint-config-paprika": "^1.0.0",
+    "nyc": "^10.3.2",
     "xo": "^0.18.2"
   }
 }

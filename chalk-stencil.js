@@ -3,6 +3,7 @@ const chalk = require('chalk')
 const colorRE = /::[\w.]+$/
 
 function colorize(chunk) {
+  /* istanbul ignore next */
   if (!colorRE.exec(chunk)) return chunk
   const [str, chalkCode] = chunk.split('::')
 
@@ -25,13 +26,11 @@ const chalkStencil = function (strings, ...keys) {
       const key = keys[i++]
       if (key === undefined) {
         resStr = `${resStr}${s}`
-      } else {
+      } else if (typeof key === 'string') {
         const [prop, style] = key.split('::')
         let val
         if (prop === '_') {
           val = `${props}`
-        } else if (prop === undefined) {
-          val = `<missing property>`
         } else if (props !== undefined && props[prop] !== undefined) {
           val = props[prop]
         } else {
@@ -42,6 +41,8 @@ const chalkStencil = function (strings, ...keys) {
         } else {
           resStr = `${resStr}${s}${val}`
         }
+      } else {
+        resStr = `${resStr}${s}${key}`
       }
     }
     return colorRE.exec(resStr) ? colorize(resStr) : resStr
@@ -52,8 +53,11 @@ const chalkStencil = function (strings, ...keys) {
   // If someone will ever need to inspect the source code at runtime, it can be done like so:
   // const tpl = chalk`some red stuff::red`
   // Function.prototype.toString.call(tpl)
+
+  /* istanbul ignore next */
   tplFn.inspect = () => tplFn()
   tplFn.toString = () => tplFn()
+  /* istanbul ignore next */
   tplFn.valueOf = () => tplFn()
 
   return tplFn
@@ -64,3 +68,6 @@ const warnMsg = chalkStencil`Warning: The color or style ${'_::cyan.underline'} 
 ::yellow`
 
 module.exports = chalkStencil
+
+// For testing purposes
+module.exports._colorize = colorize
